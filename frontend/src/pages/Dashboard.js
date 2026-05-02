@@ -256,16 +256,16 @@ function Dashboard() {
   const [isSuccess, setIsSuccess] = useState(false);
   const navigate = useNavigate();
 
-  useEffect(() => { fetchBlogs(); }, []);
+  useEffect(() => { fetchBlogs(); }, [fetchBlogs]);
 
   const fetchBlogs = async () => {
-    try {
-      const res = await getBlogs();
-      setBlogs(res.data);
-    } catch {
-      navigate('/');
-    }
-  };
+  try {
+    const res = await getBlogs();
+    setBlogs(res.data);
+  } catch {
+    navigate("/");
+  }
+};
 
   const handleSave = async () => {
     if (!title || !content) { setMessage('Please fill in both fields'); setIsSuccess(false); return; }
